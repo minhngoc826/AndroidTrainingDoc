@@ -22,10 +22,12 @@
       + từ API 30: thêm permission QUERY_ALL_PACKAGES + tag <queries> <package android:name="com.example.training"/> </queries>
   - android:protectionLevel="signature": quyền truy cập được kiểm soát nhiều hơn vào dữ liệu của trình cung cấp nội dung khi ứng dụng truy cập vào dữ liệu đã ký bằng cùng một khoá.
 
+  - Quyền cố định cho URI: <path-permission>
+
   - Truy cập bằng quyền tạm thời cho Uri: 
     khi app ko có quyền vào ContentProvider thì có thể request qua 1 app khác đã được cấp quyền để lấy quyền tạm thời cho Uri, ko phải cho app
     + ContentProvider: define permission for Uri, dùng "android:grantUriPermissions" or thẻ <grant-uri-permission> của <provider>
-    + Other apps: sent intent to app có quyền, gắn flag FLAG_GRANT_READ_URI_PERMISSION/FLAG_GRANT_WRITE_URI_PERMISSION -> startActivityForResult() -> onActivityResult()
+    + Other apps: sent intent to app có quyền, setFlags FLAG_GRANT_READ_URI_PERMISSION/FLAG_GRANT_WRITE_URI_PERMISSION -> startActivityForResult() -> onActivityResult()
     + Ví dụ: Contacts, send intent với ACTION_PICK, MIME CONTENT_ITEM_TYPE CONTACT = startActivityForResult() -> user select a contact -> trả kết quả trong onActivityResult()
     + grantUriPermissions() / Context.revokeUriPermission()
   
