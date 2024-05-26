@@ -18,7 +18,7 @@
 2. Đọc dữ liệu bởi ứng dụng khác: 
   - Nếu ContentProvider ko define permission nào, các ứng dụng khác sẽ ko có quyền truy cập
   - ContentProvider: define permission read/write by <android:permission="read/write">: quyền này show ra bởi trình quản lý gói Android khi user cài đặt ứng dụng -> user OK thì mới cài.
-  - Other apps: declare permission <uses-permission> in manifest
+  - Other apps: declare permission <uses-permission> in manifest và permission QUERY_ALL_PACKAGES + tag <queries> <package android:name="com.example.training"/> </queries>
   - android:protectionLevel="signature": quyền truy cập được kiểm soát nhiều hơn vào dữ liệu của trình cung cấp nội dung khi ứng dụng truy cập vào dữ liệu đã ký bằng cùng một khoá.
 
   - Truy cập bằng quyền tạm thời cho Uri: 
