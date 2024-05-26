@@ -18,7 +18,8 @@
 2. Đọc dữ liệu bởi ứng dụng khác: 
   - Nếu ContentProvider ko define permission nào, các ứng dụng khác sẽ ko có quyền truy cập
   - ContentProvider: define permission read/write by <android:permission="read/write">: quyền này show ra bởi trình quản lý gói Android khi user cài đặt ứng dụng -> user OK thì mới cài.
-  - Other apps: declare permission <uses-permission> in manifest và permission QUERY_ALL_PACKAGES + tag <queries> <package android:name="com.example.training"/> </queries>
+  - Other apps: declare permission <uses-permission> in manifest 
+      + từ API 30: thêm permission QUERY_ALL_PACKAGES + tag <queries> <package android:name="com.example.training"/> </queries>
   - android:protectionLevel="signature": quyền truy cập được kiểm soát nhiều hơn vào dữ liệu của trình cung cấp nội dung khi ứng dụng truy cập vào dữ liệu đã ký bằng cùng một khoá.
 
   - Truy cập bằng quyền tạm thời cho Uri: 
@@ -33,7 +34,7 @@
   
 3. Protect data: avoid SQL injection
   - String selectionClause = "var = " + userInput; (var = nothing; DROP TABLE *;) --> String selectionClause =  "var = ?";
-  - UriMatcher: match uri
+  - UriMatcher: match uri -> static mUriMatcher = new UriMatcher()
 
     
 4. Thao tác CRUD
@@ -56,15 +57,15 @@
     + UriMatcher:
     + Uri.Builder:
     + ContentUris:
-    Thuộc tính khởi động và điều khiển
-    Những thuộc tính này xác định cách thức và thời điểm hệ thống Android khởi động trình cung cấp, đặc điểm quy trình của trình cung cấp và các chế độ cài đặt thời gian chạy khác:
-    android:enabled: gắn cờ cho phép hệ thống khởi động trình cung cấp
-    android:exported: gắn cờ cho phép các ứng dụng khác dùng ứng dụng này
-    android:initOrder: thứ tự bắt đầu trình cung cấp này, so với các trình cung cấp khác trong cùng một quy trình
-    android:multiProcess: gắn cờ cho phép hệ thống khởi động trình cung cấp trong cùng một quy trình với ứng dụng gọi
-    android:process: tên của quy trình mà trình cung cấp chạy
-    android:syncable: cờ cho biết rằng dữ liệu của nhà cung cấp sẽ được đồng bộ hoá với dữ liệu trên máy chủ
-    Các thuộc tính này được ghi lại đầy đủ trong hướng dẫn về phần tử <provider>.
+    + Thuộc tính khởi động và điều khiển
+      Những thuộc tính này xác định cách thức và thời điểm hệ thống Android khởi động trình cung cấp, đặc điểm quy trình của trình cung cấp và các chế độ cài đặt thời gian chạy khác:
+      android:enabled: gắn cờ cho phép hệ thống khởi động trình cung cấp
+      android:exported: gắn cờ cho phép các ứng dụng khác dùng ứng dụng này
+      android:initOrder: thứ tự bắt đầu trình cung cấp này, so với các trình cung cấp khác trong cùng một quy trình
+      android:multiProcess: gắn cờ cho phép hệ thống khởi động trình cung cấp trong cùng một quy trình với ứng dụng gọi
+      android:process: tên của quy trình mà trình cung cấp chạy
+      android:syncable: cờ cho biết rằng dữ liệu của nhà cung cấp sẽ được đồng bộ hoá với dữ liệu trên máy chủ
+      Các thuộc tính này được ghi lại đầy đủ trong hướng dẫn về phần tử <provider>.
   
 
 
